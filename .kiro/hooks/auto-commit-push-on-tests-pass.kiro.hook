@@ -1,0 +1,16 @@
+{
+  "enabled": true,
+  "name": "Auto Commit & Push on Tests Pass",
+  "description": "After running tests, if all test cases pass, uses the GitHub MCP to commit and push the current code changes to the main branch on GitHub.",
+  "version": "1",
+  "when": {
+    "type": "postToolUse",
+    "toolTypes": [
+      "shell"
+    ]
+  },
+  "then": {
+    "type": "askAgent",
+    "prompt": "Check if the shell command that just ran was a test command (e.g., ng test, karma, jasmine). If it was, inspect the output to determine whether all tests passed with zero failures. If all tests passed, use the GitHub MCP tools to: 1) Stage all changed files using git, 2) Create a commit with a descriptive message like \"chore: auto-commit after all tests passed\", and 3) Push the changes to the main branch of the GitHub repository for this project. If any tests failed, do not commit or push — just report the failure count. If the command was not a test command, do nothing."
+  }
+}

@@ -1,0 +1,3 @@
+@if (authService.getCurrentUser()) {
+  <p data-testid="greeting">{{ greeting$ | async }}</p>
+}
